@@ -25,7 +25,7 @@ class Node:
 
 class IRrtStar:
     def __init__(self, x_start, x_goal, step_len,
-                 goal_sample_rate, search_radius, iter_max):
+                goal_sample_rate, search_radius, iter_max):
         self.x_start = Node(x_start)
         self.x_goal = Node(x_goal)
         self.step_len = step_len
@@ -123,7 +123,7 @@ class IRrtStar:
 
         dist_table = [(nd.x - node.x) ** 2 + (nd.y - node.y) ** 2 for nd in nodelist]
         X_near = [nodelist[ind] for ind in range(len(dist_table)) if dist_table[ind] <= r ** 2 and
-                  not self.utils.is_collision(nodelist[ind], node)]
+                not self.utils.is_collision(nodelist[ind], node)]
 
         return X_near
 
@@ -158,7 +158,7 @@ class IRrtStar:
 
         if np.random.random() > self.goal_sample_rate:
             return Node((np.random.uniform(self.x_range[0] + delta, self.x_range[1] - delta),
-                         np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
+                        np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
 
         return self.x_goal
 
@@ -182,7 +182,7 @@ class IRrtStar:
     @staticmethod
     def RotationToWorldFrame(x_start, x_goal, L):
         a1 = np.array([[(x_goal.x - x_start.x) / L],
-                       [(x_goal.y - x_start.y) / L], [0.0]])
+                    [(x_goal.y - x_start.y) / L], [0.0]])
         e1 = np.array([[1.0], [0.0], [0.0]])
         M = a1 @ e1.T
         U, _, V_T = np.linalg.svd(M, True, True)
@@ -193,7 +193,7 @@ class IRrtStar:
     @staticmethod
     def Nearest(nodelist, n):
         return nodelist[int(np.argmin([(nd.x - n.x) ** 2 + (nd.y - n.y) ** 2
-                                       for nd in nodelist]))]
+                                    for nd in nodelist]))]
 
     @staticmethod
     def Line(x_start, x_goal):
