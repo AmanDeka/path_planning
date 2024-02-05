@@ -1,7 +1,3 @@
-"""
-RRT_star 2D
-@author: huiming zhou
-"""
 
 import os
 import sys

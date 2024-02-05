@@ -1,7 +1,4 @@
-"""
-RRT_2D
-@author: huiming zhou
-"""
+
 
 import os
 import sys
