@@ -17,7 +17,7 @@ class Node:
 
 class RrtStar:
     def __init__(self, x_start, x_goal, step_len,
-                 goal_sample_rate, search_radius, iter_max):
+                goal_sample_rate, search_radius, iter_max):
         self.s_start = Node(x_start)
         self.s_goal = Node(x_goal)
         self.step_len = step_len
@@ -89,7 +89,7 @@ class RrtStar:
 
         if len(node_index) > 0:
             cost_list = [dist_list[i] + self.cost(self.vertex[i]) for i in node_index
-                         if not self.utils.is_collision(self.vertex[i], self.s_goal)]
+                        if not self.utils.is_collision(self.vertex[i], self.s_goal)]
             return node_index[int(np.argmin(cost_list))]
 
         return len(self.vertex) - 1
@@ -104,7 +104,7 @@ class RrtStar:
 
         if np.random.random() > goal_sample_rate:
             return Node((np.random.uniform(self.x_range[0] + delta, self.x_range[1] - delta),
-                         np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
+                        np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
 
         return self.s_goal
 

@@ -1,5 +1,3 @@
-
-
 import os
 import sys
 import math
@@ -92,7 +90,7 @@ class RrtConnect:
 
         if np.random.random() > goal_sample_rate:
             return Node((np.random.uniform(self.x_range[0] + delta, self.x_range[1] - delta),
-                         np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
+                        np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
 
         return sample_goal
 
